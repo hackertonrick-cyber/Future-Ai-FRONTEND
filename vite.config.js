@@ -1,10 +1,10 @@
 import { fileURLToPath, URL } from 'url'
 import { defineConfig, loadEnv } from 'vite'
-
 import vue from '@vitejs/plugin-vue'
 
 export default ({ mode }) => {
-  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
+  // Load env variables based on current mode
+  const env = loadEnv(mode, process.cwd(), '')
 
   return defineConfig({
     plugins: [vue()],
@@ -32,15 +32,18 @@ export default ({ mode }) => {
       },
     },
     server: {
-      port: parseInt(process.env.VITE_PORT || '5173', 10),
+      port: parseInt(env.VITE_PORT || '5173', 10),
       proxy: {
         '/socket.io': {
-          target: process.env.VITE_SOCKET_API_URL || 'http://localhost:5000',
+          target: env.VITE_SOCKET_API_URL || 'http://localhost:5000',
           ws: true,
-          changeOrigin: true, // For API server to accept requests from other domains
-          secure: true, // Ensure this is true for production to use wss://
+          changeOrigin: true,
+          secure: false, // set true only if you have valid SSL cert
         },
       },
+    },
+    define: {
+      'process.env': env, // ✅ exposes env vars to Vite context
     },
   })
 }
