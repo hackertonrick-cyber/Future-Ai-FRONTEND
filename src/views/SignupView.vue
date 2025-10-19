@@ -19,7 +19,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('@/assets/image/LG_CAVE.jpg');
     background-size: cover;
     background-position: center;
     z-index: 1; /* Ensure it's behind everything */
