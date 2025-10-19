@@ -101,6 +101,7 @@ const safeMenuItems = computed(() => {
       { text: "accessRequest", to: { name: "AccessRequest" } },
       { text: "appointment", to: { name: "Appointment" } },
       { text: "userProfile", to: { name: "UserProfile" } },
+      { text: "orgUserRegistration", to: { name: "OrgUserRegistration" } },
     ],
     doctor: [
       { text: "patients", to: { name: "Patients" } },

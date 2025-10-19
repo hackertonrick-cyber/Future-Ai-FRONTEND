@@ -195,8 +195,7 @@ const en = {
   reset_your_password: 'Reset Your Password',
   enter_tip_amount: 'Enter tip amount',
   unlock_media: 'Unlock Media',
-  unlock_prompt:
-    'This media costs {amount} LPG to unlock. Are you sure you want to proceed?',
+  unlock_prompt: 'This media costs {amount} LPG to unlock. Are you sure you want to proceed?',
   unlock: 'Unlock',
   locked_by_default: 'No one has unlocked this yet',
   unlocked_for_you: 'You’ve unlocked this',
@@ -208,8 +207,7 @@ const en = {
   upload_file: 'Upload File',
   use_camera: 'Use Camera',
   choose_file: 'Choose File',
-  recording_ends_in:
-    'Recording ends in {count} seconds, or use the stop recording button.',
+  recording_ends_in: 'Recording ends in {count} seconds, or use the stop recording button.',
   take_snapshot: 'Take Snapshot',
   open_media_dialog: 'Open Media Modal',
   retake_photo: 'Retake Photo',
@@ -231,8 +229,7 @@ const en = {
   bronze_perk: '8 LPG Bronze Entry tier.',
   silver_perk: '16 LPG +2 Gallery slots.',
   actions_taken: 'Appropriate action has been taken.',
-  action_disregarded:
-    'The report lacked sufficient grounds and has been dismissed.',
+  action_disregarded: 'The report lacked sufficient grounds and has been dismissed.',
   action_reviewed:
     'The matter has been escalated for further review and is now under consideration.',
   change_password: 'Change Password',
@@ -256,8 +253,7 @@ const en = {
   pick_one: "How will we know if you don't pick one?",
   lost_confused: "You're a lost, confused soul?",
   unknown_self: "You don't know yourself? Just pick one 😒",
-  machine_comparison:
-    'Even machines have relationship status—are you that sad? 🙄',
+  machine_comparison: 'Even machines have relationship status—are you that sad? 🙄',
   time_waster: "So you're just here to waste others' time? 😒",
   romantic: 'Romantic',
   experimental: 'Experimental',
@@ -266,10 +262,8 @@ const en = {
   consensual_non_consent: 'Consensual Non-Consent',
 
   romantic_desc: 'Seeks emotional connection, affection, and intimacy first.',
-  experimental_desc:
-    'Open to trying new experiences with clear consent and boundaries.',
-  playful_desc:
-    'Light-hearted, flirty, and fun; keeps things easy and engaging.',
+  experimental_desc: 'Open to trying new experiences with clear consent and boundaries.',
+  playful_desc: 'Light-hearted, flirty, and fun; keeps things easy and engaging.',
   consensual_non_consent_desc:
     'Role-play scenarios with negotiated boundaries and safe words; consent is explicit and can be withdrawn at any time.',
   cuckolding_desc:
@@ -282,24 +276,23 @@ const en = {
     trigger: 'TERMS',
     dialog_title: 'Terms of use',
     effective_date: 'Effective Date',
-    intro:"",
+    intro: '',
     read_carefully: 'Please read them carefully.',
     sections: {
       1: {
         title: 'Eligibility',
         to_use_our_app: 'To use our app',
-        point_1:
-          'You must be at least 18 years old (or the age of majority in your jurisdiction).',
-        point_2: ""
-      }
+        point_1: 'You must be at least 18 years old (or the age of majority in your jurisdiction).',
+        point_2: '',
+      },
     },
     final_notice:
       'By using our app, you agree to abide by these Terms and help us build a safe, fun, and fair community.',
   },
-
+  organization_code: 'Organization Code',
   auth: {
     sign_in: 'Sign In',
-    login_as_company : 'Company?',
+    login_as_company: 'Company?',
     sign_up: 'Sign Up',
     login: 'Login',
     google_continue: 'Continue with Google',
@@ -318,7 +311,7 @@ const en = {
   Argentina: 'Argentina',
   Armenia: 'Armenia',
   Aruba: 'Aruba',
-  patient_registration: "Patient Registration",
+  patient_registration: 'Patient Registration',
   Australia: 'Australia',
   Austria: 'Austria',
   Azerbaijan: 'Azerbaijan',
@@ -357,8 +350,7 @@ const en = {
   Colombia: 'Colombia',
   Comoros: 'Comoros',
   Congo: 'Congo',
-  'Congo, the Democratic Republic of the':
-    'Congo, the Democratic Republic of the',
+  'Congo, the Democratic Republic of the': 'Congo, the Democratic Republic of the',
   'Cook Islands': 'Cook Islands',
   'Costa Rica': 'Costa Rica',
   Croatia: 'Croatia',
@@ -424,8 +416,7 @@ const en = {
   Kazakhstan: 'Kazakhstan',
   Kenya: 'Kenya',
   Kiribati: 'Kiribati',
-  "Korea, Democratic People's Republic of":
-    "Korea, Democratic People's Republic of",
+  "Korea, Democratic People's Republic of": "Korea, Democratic People's Republic of",
   'Korea, Republic of': 'Korea, Republic of',
   Kuwait: 'Kuwait',
   Kyrgyzstan: 'Kyrgyzstan',
@@ -439,8 +430,7 @@ const en = {
   Lithuania: 'Lithuania',
   Luxembourg: 'Luxembourg',
   Macao: 'Macao',
-  'Macedonia, the Former Yugoslav Republic of':
-    'Macedonia, the Former Yugoslav Republic of',
+  'Macedonia, the Former Yugoslav Republic of': 'Macedonia, the Former Yugoslav Republic of',
   Madagascar: 'Madagascar',
   Malawi: 'Malawi',
   Malaysia: 'Malaysia',
@@ -494,8 +484,7 @@ const en = {
   Rwanda: 'Rwanda',
   Réunion: 'Réunion',
   'Saint Barthélemy': 'Saint Barthélemy',
-  'Saint Helena, Ascension and Tristan da Cunha':
-    'Saint Helena, Ascension and Tristan da Cunha',
+  'Saint Helena, Ascension and Tristan da Cunha': 'Saint Helena, Ascension and Tristan da Cunha',
   'Saint Kitts and Nevis': 'Saint Kitts and Nevis',
   'Saint Lucia': 'Saint Lucia',
   'Saint Martin (French part)': 'Saint Martin (French part)',
@@ -516,8 +505,7 @@ const en = {
   'Solomon Islands': 'Solomon Islands',
   Somalia: 'Somalia',
   'South Africa': 'South Africa',
-  'South Georgia and the South Sandwich Islands':
-    'South Georgia and the South Sandwich Islands',
+  'South Georgia and the South Sandwich Islands': 'South Georgia and the South Sandwich Islands',
   'South Sudan': 'South Sudan',
   Spain: 'Spain',
   'Sri Lanka': 'Sri Lanka',
@@ -547,8 +535,7 @@ const en = {
   'United Arab Emirates': 'United Arab Emirates',
   'United Kingdom': 'United Kingdom',
   'United States': 'United States',
-  'United States Minor Outlying Islands':
-    'United States Minor Outlying Islands',
+  'United States Minor Outlying Islands': 'United States Minor Outlying Islands',
   Uruguay: 'Uruguay',
   Uzbekistan: 'Uzbekistan',
   Vanuatu: 'Vanuatu',

@@ -167,7 +167,15 @@ const submit = async () => {
 }
 
 const authGoogle = () => userStore.LOGIN_GOOGLE()
-const signUp = () => router.push({ name: "Signup" })
+const signUp = () => {
+  if (state.isCompany) {
+    // 👇 Redirect company sign-ups to the organization registration page
+    router.push({ name: "TheCompanyRegistration" })
+  } else {
+    // 👇 Otherwise go to the normal signup flow
+    router.push({ name: "Signup" })
+  }
+}
 </script>
 
 <style scoped>

@@ -6,6 +6,8 @@ import AccessRequestView from '../views/AccessRequestView.vue'
 import UserProfileView from '../views/UserProfileView.vue'
 import PatientsProfileView from '../views/PatientsProfileView.vue'
 import WhoCanViewMyDataView from '../views/WhoCanViewMyDataView.vue'
+import TheCompanyRegistrationView from '../components/TheCompanyRegistrationView.vue'
+import OrgUserRegistrationView from '../components/User/OrgUserRegistrationView.vue'
 
 const HomeView = () => import('@/views/HomeView.vue')
 const AboutView = () => import('@/views/AboutView.vue')
@@ -100,7 +102,7 @@ const routes = [
       leaveClass: 'animate__animated animate__fadeOutDown',
     },
   },
-    {
+  {
     path: '/wc-vd',
     name: 'WC-VD',
     component: WhoCanViewMyDataView,
@@ -111,13 +113,33 @@ const routes = [
       leaveClass: 'animate__animated animate__fadeOutDown',
     },
   },
-   {
+  {
     path: '/patientProfile',
     name: 'PatientProfile',
     component: PatientsProfileView,
     meta: {
       requireAuth: true,
       redirect: '/login',
+      enterClass: 'animate__animated animate__fadeInUpBig',
+      leaveClass: 'animate__animated animate__fadeOutDown',
+    },
+  },
+  {
+    path: '/org/registration',
+    name: 'TheCompanyRegistration',
+    component: TheCompanyRegistrationView,
+    meta: {
+      requireAuth: false,
+      enterClass: 'animate__animated animate__fadeInUpBig',
+      leaveClass: 'animate__animated animate__fadeOutDown',
+    },
+  },
+  {
+    path: '/org/new-user',
+    name: 'OrgUserRegistration',
+    component: OrgUserRegistrationView,
+    meta: {
+      requireAuth: true,
       enterClass: 'animate__animated animate__fadeInUpBig',
       leaveClass: 'animate__animated animate__fadeOutDown',
     },

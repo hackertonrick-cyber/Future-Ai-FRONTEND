@@ -241,6 +241,110 @@ export const useUserStore = defineStore('user', {
       socket.disconnect()
       uiStore.STOP_LOADING('user.logout')
     },
+    async [REGISTER_ORGANIZATION](payload) {
+      const [{ useSnackbarStore }, { useUiStore }] = await Promise.all([
+        import('./snackbar.js'),
+        import('./ui.js'),
+      ])
+      const snackStore = useSnackbarStore()
+      const uiStore = useUiStore()
+
+      uiStore.START_LOADING('org.register')
+
+      try {
+        // 🧩 Register organization (matches route("/org/register").post(registerOrganization))
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/user/org/register`,
+          payload,
+        )
+
+        if (!response?.data) {
+          throw new Error('Invalid registration response from server.')
+        }
+
+        // 🧠 Optional: store newly created org user if backend returns auth token or admin
+        if (response.data.user || response.data.admin) {
+          this.user = response.data.user || response.data.admin
+          this.isLoggedIn = true
+          this.JOIN_ROOM()
+        }
+
+        uiStore.STOP_LOADING('org.register')
+        snackStore.DISPLAY_SNACK({
+          text: 'Organization registration successful!',
+          type: 'success',
+        })
+        setTimeout(() => {
+          this.$router.push({ name: 'Login' })
+        }, 1500)
+
+        return response.data
+      } catch (error) {
+        uiStore.STOP_LOADING('org.register')
+
+        const errMsg =
+          error?.response?.data?.message ||
+          (error?.request
+            ? 'No response from server. Check your connection.'
+            : error.message || 'Registration failed.')
+
+        console.error('Organization Registration Error:', errMsg)
+        snackStore.DISPLAY_SNACK({ text: errMsg, type: 'error' })
+        return false
+      }
+    },
+    async [CREATE_ORGANIZATION_INVITE](user) {
+      const [{ useSnackbarStore }, { useUiStore }] = await Promise.all([
+        import('./snackbar.js'),
+        import('./ui.js'),
+      ])
+      const snackStore = useSnackbarStore()
+      const uiStore = useUiStore()
+
+      uiStore.START_LOADING('org.register')
+
+      try {
+        // 🩺 Register patient via new endpoint
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/user/admin/generate-organization`,
+          user,
+        )
+
+        if (!response?.data?.user) {
+          throw new Error('Invalid registration response from server.')
+        }
+
+        // 🧠 Update local state
+        this.user = { ...response.data.user }
+        this.isLoggedIn = true
+
+        // 🔗 Connect socket & join default room
+        this.JOIN_ROOM()
+
+        uiStore.STOP_LOADING('org.register')
+        this.$router.push('/')
+
+        snackStore.DISPLAY_SNACK({
+          text: 'Registration successful. Welcome aboard!',
+          type: 'success',
+        })
+
+        return response.data
+      } catch (error) {
+        uiStore.STOP_LOADING('org.register')
+
+        const errMsg =
+          error?.response?.data?.message ||
+          (error?.request
+            ? 'No response from server. Check your connection.'
+            : error.message || 'Registration failed.')
+
+        console.error('Registration Error:', errMsg)
+        snackStore.DISPLAY_SNACK({ text: errMsg, type: 'error' })
+
+        return false
+      }
+    },
     async [REGISTER_PATIENT](user) {
       const [{ useSnackbarStore }, { useUiStore }] = await Promise.all([
         import('./snackbar.js'),
@@ -287,6 +391,55 @@ export const useUserStore = defineStore('user', {
         console.error('Registration Error:', errMsg)
         snackStore.DISPLAY_SNACK({ text: errMsg, type: 'error' })
 
+        return false
+      }
+    },
+    // inside userStore.js
+    async [REGISTER_ORG_USER](userData) {
+      const [{ useSnackbarStore }, { useUiStore }] = await Promise.all([
+        import('./snackbar.js'),
+        import('./ui.js'),
+      ])
+      const snackStore = useSnackbarStore()
+      const uiStore = useUiStore()
+
+      uiStore.START_LOADING('orgUser.register')
+
+      try {
+        // 📡 Send request to the backend
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/user/org/new-user`,
+          userData,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          },
+        )
+
+        if (!response?.data?.user) {
+          throw new Error('Invalid response from server.')
+        }
+
+        // ✅ Stop loading and show success message
+        uiStore.STOP_LOADING('orgUser.register')
+        snackStore.DISPLAY_SNACK({
+          text: 'Organization user registered successfully!',
+          type: 'success',
+        })
+
+        return response.data
+      } catch (error) {
+        uiStore.STOP_LOADING('orgUser.register')
+
+        const errMsg =
+          error?.response?.data?.message ||
+          (error?.request
+            ? 'No response from server. Please check your connection.'
+            : error.message || 'Registration failed.')
+
+        console.error('Org User Registration Error:', errMsg)
+        snackStore.DISPLAY_SNACK({ text: errMsg, type: 'error' })
         return false
       }
     },
