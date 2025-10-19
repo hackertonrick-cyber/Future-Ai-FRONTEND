@@ -48,7 +48,7 @@ export const useMedicalStore = defineStore('medical', {
           { headers: { Authorization: `Bearer ${token}` } }
         )
 
-        this.appointments.unshift(data.appointment)
+        this.appointments.unshift(data)
         uiStore.STOP_LOADING('appointment.register')
         return data
       } catch (err) {

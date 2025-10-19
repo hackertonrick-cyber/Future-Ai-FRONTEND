@@ -3,7 +3,9 @@
     <!-- Header -->
     <v-row align="center" justify="space-between" class="mb-6">
       <h2 class="text-2xl font-semibold text-brand-green-1">
-        Appointments ({{ medicalStore.appointmentsTotal || medicalStore.appointments.length }})
+        Appointments ({{
+          medicalStore.appointmentsTotal || medicalStore.appointments.length
+        }})
       </h2>
 
       <v-btn
@@ -19,31 +21,37 @@
     <!-- Appointment Cards -->
     <v-row dense>
       <v-col
-        v-for="(appt, i) in medicalStore.appointments"
+        v-for="(appt, i) in medicalStore.appointments.appointments"
         :key="i"
         cols="12"
         sm="6"
         md="4"
       >
-        <v-card class="rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition">
+        <v-card
+          class="rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition"
+        >
           <v-card-title class="bg-brand-green-1 text-white text-lg">
-            {{ appt?.patientId?.firstName || 'Unknown' }}
-            {{ appt?.patientId?.lastName || '' }}
+            {{ appt?.patientId?.firstName || "Unknown" }}
+            {{ appt?.patientId?.lastName || "" }}
           </v-card-title>
 
           <v-card-text class="py-3">
             <p class="text-sm text-gray-600 mb-1">
               <strong>Doctor:</strong>
-              {{ appt?.doctorId?.firstName || 'N/A' }}
-              {{ appt?.doctorId?.lastName || '' }}
+              {{ appt?.doctorId?.firstName || "N/A" }}
+              {{ appt?.doctorId?.lastName || "" }}
             </p>
             <p class="text-sm text-gray-600 mb-1">
               <strong>Date:</strong>
-              {{ appt?.appointmentDate ? new Date(appt.appointmentDate).toLocaleString() : 'N/A' }}
+              {{
+                appt?.appointmentDate
+                  ? new Date(appt.appointmentDate).toLocaleString()
+                  : "N/A"
+              }}
             </p>
             <p class="text-sm text-gray-600 mb-1">
               <strong>Reason:</strong>
-              {{ appt?.reasonForVisit || 'N/A' }}
+              {{ appt?.reasonForVisit || "N/A" }}
             </p>
             <p class="text-sm text-gray-600 mb-1">
               <strong>Priority:</strong>
@@ -52,7 +60,7 @@
                 size="small"
                 text-color="white"
               >
-                {{ appt?.priority || 'normal' }}
+                {{ appt?.priority || "normal" }}
               </v-chip>
             </p>
             <p class="text-sm text-gray-600">
@@ -62,14 +70,14 @@
                 size="small"
                 text-color="white"
               >
-                {{ appt?.status || 'unknown' }}
+                {{ appt?.status || "unknown" }}
               </v-chip>
             </p>
           </v-card-text>
 
           <v-card-actions class="border-t flex justify-between px-3">
             <span class="text-xs text-gray-500">
-              Created by: {{ appt?.createdBy?.username || 'System' }}
+              Created by: {{ appt?.createdBy?.username || "System" }}
             </span>
             <v-btn
               size="small"
@@ -86,7 +94,7 @@
 
     <!-- No Appointments -->
     <v-alert
-      v-if="!medicalStore.appointments.length"
+      v-if="!medicalStore.appointments.appointments.length"
       type="info"
       variant="outlined"
       border="start"
@@ -102,7 +110,7 @@
           Create Appointment
         </v-card-title>
         <v-card-text>
-          <v-form ref="form" @submit.prevent="createAppointment">
+          <v-card-text>
             <v-row dense>
               <v-col cols="12" sm="6">
                 <v-text-field
@@ -150,7 +158,7 @@
                 />
               </v-col>
             </v-row>
-          </v-form>
+          </v-card-text>
         </v-card-text>
         <v-card-actions class="justify-end border-t pt-3">
           <v-btn text color="grey" @click="resetDialog">Cancel</v-btn>
@@ -169,17 +177,37 @@
         </v-card-title>
 
         <v-card-text v-if="selectedAppointment" class="text-sm text-gray-700 space-y-2">
-          <p><strong>Patient:</strong> {{ selectedAppointment?.patientId?.firstName || 'Unknown' }} {{ selectedAppointment?.patientId?.lastName || '' }}</p>
-          <p><strong>Doctor:</strong> {{ selectedAppointment?.doctorId?.firstName || 'N/A' }} {{ selectedAppointment?.doctorId?.lastName || '' }}</p>
-          <p><strong>Date:</strong> {{ new Date(selectedAppointment?.appointmentDate).toLocaleString() }}</p>
-          <p><strong>Reason:</strong> {{ selectedAppointment?.reasonForVisit || 'N/A' }}</p>
-          <p><strong>Priority:</strong> {{ selectedAppointment?.priority || 'normal' }}</p>
-          <p><strong>Status:</strong> {{ selectedAppointment?.status || 'unknown' }}</p>
-          <p><strong>Created By:</strong> {{ selectedAppointment?.createdBy?.username || 'System' }}</p>
+          <p>
+            <strong>Patient:</strong>
+            {{ selectedAppointment?.patientId?.firstName || "Unknown" }}
+            {{ selectedAppointment?.patientId?.lastName || "" }}
+          </p>
+          <p>
+            <strong>Doctor:</strong>
+            {{ selectedAppointment?.doctorId?.firstName || "N/A" }}
+            {{ selectedAppointment?.doctorId?.lastName || "" }}
+          </p>
+          <p>
+            <strong>Date:</strong>
+            {{ new Date(selectedAppointment?.appointmentDate).toLocaleString() }}
+          </p>
+          <p>
+            <strong>Reason:</strong> {{ selectedAppointment?.reasonForVisit || "N/A" }}
+          </p>
+          <p>
+            <strong>Priority:</strong> {{ selectedAppointment?.priority || "normal" }}
+          </p>
+          <p><strong>Status:</strong> {{ selectedAppointment?.status || "unknown" }}</p>
+          <p>
+            <strong>Created By:</strong>
+            {{ selectedAppointment?.createdBy?.username || "System" }}
+          </p>
         </v-card-text>
 
         <v-card-actions class="justify-end border-t pt-3">
-          <v-btn color="grey" variant="text" @click="showDetailsDialog = false">Close</v-btn>
+          <v-btn color="grey" variant="text" @click="showDetailsDialog = false"
+            >Close</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -187,63 +215,70 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
-import { useMedicalStore } from '@/stores/medical'
-const medicalStore = useMedicalStore()
+import { ref, reactive, onMounted } from "vue";
+import { useMedicalStore } from "@/stores/medical";
+const medicalStore = useMedicalStore();
 
-const showDialog = ref(false)
-const showDetailsDialog = ref(false)
-const selectedAppointment = ref(null)
+const showDialog = ref(false);
+const showDetailsDialog = ref(false);
+const selectedAppointment = ref(null);
 
 const form = reactive({
-  patientId: '',
-  doctorId: '',
-  appointmentDate: '',
-  reasonForVisit: '',
-  priority: 'normal',
-})
+  patientId: "",
+  doctorId: "",
+  appointmentDate: "",
+  reasonForVisit: "",
+  priority: "normal",
+});
 
 const getStatusColor = (status) => {
   switch (status) {
-    case 'scheduled': return 'blue'
-    case 'completed': return 'green'
-    case 'cancelled': return 'red'
-    default: return 'grey'
+    case "scheduled":
+      return "blue";
+    case "completed":
+      return "green";
+    case "cancelled":
+      return "red";
+    default:
+      return "grey";
   }
-}
+};
 
 const getPriorityColor = (priority) => {
   switch (priority) {
-    case 'urgent': return 'orange'
-    case 'emergency': return 'red'
-    default: return 'blue'
+    case "urgent":
+      return "orange";
+    case "emergency":
+      return "red";
+    default:
+      return "blue";
   }
-}
+};
 
 const openDetails = (appt) => {
-  selectedAppointment.value = appt
-  showDetailsDialog.value = true
-}
+  selectedAppointment.value = appt;
+  showDetailsDialog.value = true;
+};
 
 onMounted(async () => {
-  await medicalStore.GET_APPOINTMENTS()
-})
+  await medicalStore.GET_APPOINTMENTS();
+});
 
 const createAppointment = async () => {
-  await medicalStore.REGISTER_APPOINTMENT(form)
-  resetDialog()
-}
+  await medicalStore.REGISTER_APPOINTMENT(form);
+  resetDialog();
+};
 
 const resetDialog = () => {
   Object.assign(form, {
-    patientId: '',
-    doctorId: '',
-    appointmentDate: '',
-    reasonForVisit: '',
-    priority: 'normal',
-  })
-  showDialog.value = false
-}
+    patientId: "",
+    doctorId: "",
+    appointmentDate: "",
+    reasonForVisit: "",
+    priority: "normal",
+  });
+  showDialog.value = false;
+};
 </script>
 
 <style scoped>
