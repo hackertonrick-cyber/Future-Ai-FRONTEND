@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": "^20.19.0 || >=22.12.0"
+    "node": "20.19.0"
   },
   "scripts": {
     "dev": "vite",
@@ -23,9 +23,6 @@
     "@fortawesome/vue-fontawesome": "^3.0.2",
     "@mdi/font": "^7.4.47",
     "@rollup/plugin-commonjs": "^28.0.6",
-    "@tensorflow/tfjs": "^4.22.0",
-    "@tensorflow/tfjs-backend-webgl": "^4.22.0",
-    "@vladmandic/face-api": "^1.7.15",
     "@vuelidate/core": "^2.0.0",
     "@vuelidate/validators": "^2.0.0",
     "@vueuse/core": "^13.2.0",
@@ -41,7 +38,6 @@
     "pinia-plugin-persistedstate": "^4.5.0",
     "postcss": "^8.4.47",
     "sass": "^1.79.3",
-    "sass-loader": "^16.0.2",
     "socket.io-client": "^4.6.1",
     "tailwindcss": "^3.3.1",
     "vue": "^3.5.22",
