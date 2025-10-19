@@ -1,13 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useUserStore } from '@/stores/user.js'
+import PatientsView from '../views/PatientsView.vue'
+import AppointmentView from '../views/AppointmentView.vue'
+import AccessRequestView from '../views/AccessRequestView.vue'
+import UserProfileView from '../views/UserProfileView.vue'
 
 const HomeView = () => import('@/views/HomeView.vue')
 const AboutView = () => import('@/views/AboutView.vue')
 const LoginView = () => import('@/views/LoginView.vue')
 const SignupView = () => import('@/views/SignupView.vue')
-const KYCView = () => import('@/views/KYCView.vue')
 const NotificationsView = () => import('@/views/NotificationsView.vue')
-const KYCAdmin = () => import('@/views/KYCAdminView.vue')
 
 const routes = [
   {
@@ -31,28 +33,6 @@ const routes = [
     },
   },
   {
-    path: '/kyc-admin',
-    name: 'KYCAdmin',
-    component: KYCAdmin,
-    meta: {
-      requireAuth: true,
-      redirect: '/login',
-      enterClass: 'animate__animated animate__fadeInUpBig',
-      leaveClass: 'animate__animated animate__fadeOutDown',
-    },
-  },
-  {
-    path: '/kyc',
-    name: 'KYC',
-    component: KYCView,
-    meta: {
-      requireAuth: true,
-      redirect: '/login',
-      enterClass: 'animate__animated animate__fadeInUpBig',
-      leaveClass: 'animate__animated animate__fadeOutDown',
-    },
-  },
-  {
     path: '/login',
     name: 'Login',
     component: LoginView,
@@ -67,6 +47,50 @@ const routes = [
     path: '/notifications',
     name: 'Notifications',
     component: NotificationsView,
+    meta: {
+      requireAuth: true,
+      redirect: '/login',
+      enterClass: 'animate__animated animate__fadeInUpBig',
+      leaveClass: 'animate__animated animate__fadeOutDown',
+    },
+  },
+  {
+    path: '/patients',
+    name: 'Patients',
+    component: PatientsView,
+    meta: {
+      requireAuth: true,
+      redirect: '/login',
+      enterClass: 'animate__animated animate__fadeInUpBig',
+      leaveClass: 'animate__animated animate__fadeOutDown',
+    },
+  },
+  {
+    path: '/appointment',
+    name: 'Appointment',
+    component: AppointmentView,
+    meta: {
+      requireAuth: true,
+      redirect: '/login',
+      enterClass: 'animate__animated animate__fadeInUpBig',
+      leaveClass: 'animate__animated animate__fadeOutDown',
+    },
+  },
+  {
+    path: '/accessRequest',
+    name: 'AccessRequest',
+    component: AccessRequestView,
+    meta: {
+      requireAuth: true,
+      redirect: '/login',
+      enterClass: 'animate__animated animate__fadeInUpBig',
+      leaveClass: 'animate__animated animate__fadeOutDown',
+    },
+  },
+  {
+    path: '/userProfile',
+    name: 'UserProfile',
+    component: UserProfileView,
     meta: {
       requireAuth: true,
       redirect: '/login',
@@ -99,18 +123,6 @@ router.beforeEach(async (to, from, next) => {
   const userStore = useUserStore()
   if (to.meta.requireAuth && !userStore.isLoggedIn) {
     return next({ path: to.meta.redirect }) // Redirect to login if not authenticated
-  }
-
-  if (to.meta.requiresVerification) {
-    if (!userStore.user.emailVerified || !userStore.user.paxumVerified) {
-      const useSnackbarStore = await import('@/stores/snackbar.js')
-      const snackStore = useSnackbarStore.useSnackbarStore()
-      snackStore.DISPLAY_SNACK({
-        text: 'NO CHILDREN ALLOWED!! Please, you must validate your paxum, and pass the kyc to continue.',
-        type: 'warning',
-      })
-      return next({ path: '/profile' })
-    }
   }
 
   if (to.meta.external) {

@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>Patients Profile view</div>
 </template>
 
 <script setup></script>

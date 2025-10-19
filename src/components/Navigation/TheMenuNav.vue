@@ -21,23 +21,7 @@
             :to="{ name: 'Notifications' }"
             link
           >
-            <template #prepend>
-              <lpg-icon
-                v-if="!userHasNotification"
-                height="25"
-                width="25"
-                icon-name="NoNotificationIcon"
-                view-box="3 -1 24 22"
-              />
-              <lpg-icon
-                v-else
-                height="25"
-                width="25"
-                class="text-brand-red-3"
-                icon-name="NotificationIcon"
-                view-box="3 -1 24 22"
-              />
-            </template>
+            <template #prepend> </template>
             <v-list-item-title>{{ $t("notifications") }}</v-list-item-title>
           </v-list-item>
 
@@ -49,14 +33,7 @@
             :to="item.to"
             link
           >
-            <template #prepend>
-              <lpg-icon
-                height="22"
-                width="25"
-                :icon-name="item.icon"
-                view-box="3 -1 24 22"
-              />
-            </template>
+            <template #prepend> </template>
             <v-list-item-title>{{ $t(item.text) }}</v-list-item-title>
           </v-list-item>
         </v-list>
@@ -118,14 +95,31 @@ const safeMenuItems = computed(() => {
     ...(uid
       ? [
           {
-            link: "Gallery",
-            text: "gallery",
-            icon: "GalleryIcon",
-            to: { name: "Gallery", params: { userId: uid } },
+            link: "Patients",
+            text: "patients",
+            icon: "User",
+            to: { name: "Patients" },
+          },
+          {
+            link: "AccessRequest",
+            text: "accessRequest",
+            icon: "User",
+            to: { name: "AccessRequest" },
+          },
+          {
+            link: "Appointment",
+            text: "appointment",
+            icon: "User",
+            to: { name: "Appointment" },
+          },
+          {
+            link: "UserProfile",
+            text: "userProfile",
+            icon: "User",
+            to: { name: "UserProfile" },
           },
         ]
       : []),
-    { link: "KYC", text: "kyc", icon: "FootprintIcon", to: { name: "KYC" } },
   ];
 });
 

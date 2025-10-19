@@ -1,6 +1,5 @@
 import { reactive } from 'vue'
 import { io } from 'socket.io-client'
-import { useKycStore } from '@/stores/kyc'
 import { useUserStore } from '@/stores/user'
 
 export const socketState = reactive({
@@ -59,19 +58,6 @@ socket.on('logoutUser', async () => {
 
   if (userStore.isLoggedIn) {
     userStore.LOGOUT()
-  }
-})
-
-socket.on('kyc_status', async (payload) => {
-  const kycStore = useKycStore()
-  const userStore = useUserStore()
-
-  kycStore.APPLY_SOCKET(payload)
-
-  if (payload?.status === 'verified') {
-    userStore.user.kycVerification = 'verified'
-  } else if (payload?.status && payload.status !== 'pending') {
-    userStore.user.kycVerification = 'in_progress'
   }
 })
 
@@ -156,9 +142,4 @@ socket.on('typingStatus', ({ userId, isTyping }) => {
 socket.on('updateSocketId', (newSocketId) => {
   socketState.socketId = newSocketId.toString()
   console.log('Updated socket ID:', socketState.socketId)
-})
-
-socket.on('kycUpdate', async (data) => {
-  const userStore = useUserStore()
-  await userStore.UPDATE_KYC_VERIFICATION_STATUS(data.status)
 })

@@ -19,7 +19,26 @@ import router from './router'
 
 import i18n from './utils/Translation/i18n.js'
 
-import {} from '@fortawesome/free-solid-svg-icons'
+import {
+  faUserDoctor,
+  faHospital,
+  faUsers,
+  faCalendarCheck,
+  faRightFromBracket,
+  faBell,
+  faCirclePlus,
+} from '@fortawesome/free-solid-svg-icons'
+
+library.add(
+  faUserDoctor,
+  faHospital,
+  faUsers,
+  faCalendarCheck,
+  faRightFromBracket,
+  faBell,
+  faCirclePlus
+)
+
 
 const myTheme = {
   dark: false,
