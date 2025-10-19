@@ -74,24 +74,46 @@ socket.on('presencePing', async ({ userId, pingId }) => {
   })
 })
 
-socket.on('userNotification', async (data) => {
-  const useSnackbarStore = await import('@/stores/snackbar.js')
-  const snackStore = useSnackbarStore.useSnackbarStore()
-  const userStore = useUserStore()
-
+socket.on('userNotification', async (payload) => {
   try {
-    userStore.notifications.notifications.unshift(data)
+    // Lazy import to avoid circular dependencies
+    const { useSnackbarStore } = await import('@/stores/snackbar.js')
+    const snackStore = useSnackbarStore()
+    const userStore = useUserStore()
+
+    // Validate payload
+    if (!payload || typeof payload !== 'object') {
+      console.warn('⚠️ Invalid notification payload received:', payload)
+      return
+    }
+
+    // Normalize fields
+    const notification = {
+      subject: payload.subject || 'Notification',
+      message: payload.message || '',
+      type: payload.type || 'info',
+      timestamp: payload.timestamp || new Date(),
+      actions: payload.actions || [],
+      from: payload.from || null,
+      read: false,
+    }
+
+    // Update store
+    userStore.notifications.notifications.unshift(notification)
 
     if (userStore.notifications.pageInfo) {
       userStore.notifications.pageInfo.total += 1
     }
 
+    // Display visual feedback
     snackStore.DISPLAY_SNACK({
-      text: payload.subject || 'New Notification',
-      type: 'success',
+      text: notification.subject,
+      type: notification.type === 'error' ? 'error' : 'success',
     })
+
+    console.log('📩 Real-time notification received:', notification)
   } catch (err) {
-    console.warn('🔴 Failed to process incoming notification:', err)
+    console.error('🔴 Failed to process incoming notification:', err)
   }
 })
 

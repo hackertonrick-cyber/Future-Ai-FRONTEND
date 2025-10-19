@@ -248,7 +248,6 @@ const en = {
   write_reply: 'Write a reply...',
   write_comment: 'Write a comment...',
   close: 'Close',
-  terms: 'Terms',
   privacy: 'Privacy',
   cost: 'Cost',
   pending: 'Pending',
@@ -300,6 +299,7 @@ const en = {
 
   auth: {
     sign_in: 'Sign In',
+    login_as_company : 'Company?',
     sign_up: 'Sign Up',
     login: 'Login',
     google_continue: 'Continue with Google',

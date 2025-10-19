@@ -9,7 +9,7 @@
               class="text-center bg-white text-brand-green-1 text-2xl font-semibold border-b"
             >
               <span class="border-b-2 border-brand-green-1 px-2">
-                {{ $t("auth.sign_in") }}
+                {{ $t("sign_in") }}
               </span>
               <span
                 class="ml-6 cursor-pointer text-gray-400 hover:text-brand-green-1"

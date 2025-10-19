@@ -7,7 +7,7 @@ const es = {
   lastNameRequired: 'Apellido es obligatorio',
   invalidLastName: 'Mínimo 3 caracteres para apellido',
   gender: 'Género',
-   patient_registration: "Registro de Pacientes",
+  patient_registration: 'Registro de Pacientes',
   genderRequired: 'Selecciona un género',
   heistMember: 'Miembro del golpe',
   heistMemberRequired: 'Selecciona un miembro del golpe',
@@ -22,8 +22,7 @@ const es = {
   emailRequired: 'Correo es obligatorio',
   invalidEmail: 'Correo inválido',
   passwordRequired: 'Contraseña obligatoria',
-  invalidPassword:
-    'Mínimo 8 caracteres con mayúscula, minúscula, número y símbolo',
+  invalidPassword: 'Mínimo 8 caracteres con mayúscula, minúscula, número y símbolo',
   passwordDidNotMatch: 'Las contraseñas no coinciden',
   firstNameRequired: 'Nombre es obligatorio',
   invalidFirstName: 'Mínimo 3 caracteres para el nombre',
@@ -210,8 +209,7 @@ const es = {
   upload_file: 'Subir archivo',
   use_camera: 'Usar cámara',
   choose_file: 'Elegir archivo',
-  recording_ends_in:
-    'La grabación termina en {count} segundos, o usa el botón para detenerla.',
+  recording_ends_in: 'La grabación termina en {count} segundos, o usa el botón para detenerla.',
   take_snapshot: 'Tomar foto',
   open_media_dialog: 'Abrir ventana de medios',
   retake_photo: 'Repetir foto',
@@ -227,18 +225,14 @@ const es = {
     'He who holds the gold, holds the game. Overpower the others before they overpower you.',
   raid_their_cut:
     'The biggest crew wins the final cut. Backstab smart, but stack the odds in your favor.',
-  platinum_perk:
-    '66 LPG +8 espacios en galería +1 aumento del límite de mensajes.',
-  diamond_perk:
-    '167 LPG +10 espacios en galería +3 aumento del límite de mensajes.',
+  platinum_perk: '66 LPG +8 espacios en galería +1 aumento del límite de mensajes.',
+  diamond_perk: '167 LPG +10 espacios en galería +3 aumento del límite de mensajes.',
   gold_perk: '33 LPG +5 espacios en galería.',
   bronze_perk: '8 LPG Nivel de entrada Bronce.',
   silver_perk: '16 LPG +2 espacios en galería.',
   actions_taken: 'Se ha tomado la acción correspondiente.',
-  action_disregarded:
-    'El informe carece de fundamentos suficientes y ha sido descartado.',
-  action_reviewed:
-    'El asunto ha sido escalado para una revisión adicional y está siendo evaluado.',
+  action_disregarded: 'El informe carece de fundamentos suficientes y ha sido descartado.',
+  action_reviewed: 'El asunto ha sido escalado para una revisión adicional y está siendo evaluado.',
   change_password: 'Cambiar contraseña',
   cancel_password_change: 'Cancelar cambio de contraseña',
   confirm_delete_title: 'Confirmar eliminación',
@@ -262,10 +256,8 @@ const es = {
   pick_one: '¿Cómo sabremos si no eliges uno?',
   lost_confused: '¿Eres un alma perdida y confundida?',
   unknown_self: '¿No te conoces a ti mismo? Solo elige uno 😒',
-  machine_comparison:
-    'Hasta las máquinas tienen estado de relación… ¿eres tan triste? 🙄',
-  time_waster:
-    '¿Entonces solo estás aquí para hacer perder el tiempo a los demás? 😒',
+  machine_comparison: 'Hasta las máquinas tienen estado de relación… ¿eres tan triste? 🙄',
+  time_waster: '¿Entonces solo estás aquí para hacer perder el tiempo a los demás? 😒',
   romantic: 'Romántico',
   experimental: 'Experimental',
   playful: 'Juguetón',
@@ -275,8 +267,7 @@ const es = {
   romantic_desc: 'Busca conexión emocional, cariño e intimidad ante todo.',
   experimental_desc:
     'Abierto a probar nuevas experiencias con consentimiento claro y límites definidos.',
-  playful_desc:
-    'Ligero, coqueto y divertido; mantiene las cosas fáciles y atractivas.',
+  playful_desc: 'Ligero, coqueto y divertido; mantiene las cosas fáciles y atractivas.',
   consensual_non_consent_desc:
     'Escenarios de rol con límites negociados y palabras seguras; el consentimiento es explícito y puede retirarse en cualquier momento.',
   cuckolding_desc:
@@ -298,6 +289,7 @@ const es = {
   auth: {
     sign_in: 'Iniciar sesión',
     sign_up: 'Registrarse',
+    login_as_company: 'Compania?',
     login: 'Acceder',
     google_continue: 'Continuar con Google',
     forgot_password: '¿Olvidaste tu contraseña?',
@@ -399,8 +391,7 @@ const es = {
   Guyana: 'Guyana',
   Haiti: 'Haití',
   'Heard Island and McDonald Islands': 'Islas Heard y McDonald',
-  'Holy See (Vatican City State)':
-    'Santa Sede (Estado de la Ciudad del Vaticano)',
+  'Holy See (Vatican City State)': 'Santa Sede (Estado de la Ciudad del Vaticano)',
   Honduras: 'Honduras',
   'Hong Kong': 'Hong Kong',
   Hungary: 'Hungría',
@@ -435,8 +426,7 @@ const es = {
   Lithuania: 'Lituania',
   Luxembourg: 'Luxemburgo',
   Macao: 'Macao',
-  'Macedonia, the Former Yugoslav Republic of':
-    'Macedonia, ex República Yugoslava de',
+  'Macedonia, the Former Yugoslav Republic of': 'Macedonia, ex República Yugoslava de',
   Madagascar: 'Madagascar',
   Malawi: 'Malaui',
   Malaysia: 'Malasia',
@@ -490,8 +480,7 @@ const es = {
   Rwanda: 'Ruanda',
   Réunion: 'Reunión',
   'Saint Barthélemy': 'San Bartolomé',
-  'Saint Helena, Ascension and Tristan da Cunha':
-    'Santa Elena, Ascensión y Tristán de Acuña',
+  'Saint Helena, Ascension and Tristan da Cunha': 'Santa Elena, Ascensión y Tristán de Acuña',
   'Saint Kitts and Nevis': 'San Cristóbal y Nieves',
   'Saint Lucia': 'Santa Lucía',
   'Saint Martin (French part)': 'San Martín (parte francesa)',
@@ -512,8 +501,7 @@ const es = {
   'Solomon Islands': 'Islas Salomón',
   Somalia: 'Somalia',
   'South Africa': 'Sudáfrica',
-  'South Georgia and the South Sandwich Islands':
-    'Islas Georgias del Sur y Sandwich del Sur',
+  'South Georgia and the South Sandwich Islands': 'Islas Georgias del Sur y Sandwich del Sur',
   'South Sudan': 'Sudán del Sur',
   Spain: 'España',
   'Sri Lanka': 'Sri Lanka',
@@ -543,8 +531,7 @@ const es = {
   'United Arab Emirates': 'Emiratos Árabes Unidos',
   'United Kingdom': 'Reino Unido',
   'United States': 'Estados Unidos',
-  'United States Minor Outlying Islands':
-    'Islas Ultramarinas Menores de Estados Unidos',
+  'United States Minor Outlying Islands': 'Islas Ultramarinas Menores de Estados Unidos',
   Uruguay: 'Uruguay',
   Uzbekistan: 'Uzbekistán',
   Vanuatu: 'Vanuatu',
