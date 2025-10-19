@@ -35,7 +35,7 @@
             :to="menuItem.url"
             class="text-white hover:text-brand-yellow-3 transition-colors duration-200 text-sm font-medium"
           >
-            {{ $t(menuItem.text) }}
+            {{ $t(menuItem.text).toUpperCase() }}
           </router-link>
         </nav>
 
@@ -110,7 +110,6 @@ import { useRouter } from "vue-router";
 import { useUserStore } from "@/stores/user";
 import { useSnackbarStore } from "@/stores/snackbar";
 
-import ProfileImage from "@/components/Shared/ProfileImage.vue";
 import TheMenuNav from "./TheMenuNav.vue";
 
 const router = useRouter();
@@ -119,16 +118,6 @@ const snackbarStore = useSnackbarStore();
 
 const user = computed(() => userStore.user);
 const isLoggedIn = computed(() => userStore.isLoggedIn);
-
-const hasNewNotification = computed(() => {
-  const list = userStore.notifications?.notifications ?? [];
-  return list.some(
-    (n) =>
-      ["not_viewed", "unread", "new", "pending"].includes(
-        (n?.status ?? "").toLowerCase()
-      ) || n?.viewed === false
-  );
-});
 
 const snack = computed({
   get: () => Boolean(snackbarStore.snack?.visible),
@@ -156,9 +145,6 @@ watch(
   () => user.value?.avatar,
   () => avatarVersion.value++,
   { immediate: true }
-);
-const avatarImage = computed(() =>
-  user.value?.avatar ? `${user.value.avatar}?v=${avatarVersion.value}` : null
 );
 
 const translate = (locale) => {

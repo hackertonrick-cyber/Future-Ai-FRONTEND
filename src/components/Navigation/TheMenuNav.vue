@@ -54,7 +54,6 @@
 
 <script setup>
 import { computed } from "vue"
-import { useDisplay } from "vuetify"
 import { useUserStore } from "@/stores/user"
 
 const props = defineProps({
@@ -63,28 +62,11 @@ const props = defineProps({
 const emit = defineEmits(["closeDrawer", "update:openDrawer"])
 
 const userStore = useUserStore()
-const display = useDisplay()
 
 // v-model proxy for the drawer
 const drawerModel = computed({
   get: () => props.openDrawer,
   set: (v) => emit("update:openDrawer", v),
-})
-
-// Notification badge logic (robust/unviewed)
-const userHasNotification = computed(() => {
-  const list = userStore.notifications?.notifications ?? []
-  if (!Array.isArray(list) || list.length === 0) return false
-
-  const isUnviewed = (n) => {
-    const status = String(n?.status ?? "").toLowerCase()
-    if (["not_viewed", "unread", "new", "pending"].includes(status)) return true
-    if (n?.viewed === false) return true
-    if (n?.viewedAt == null && status !== "viewed") return true
-    return false
-  }
-
-  return list.some(isUnviewed)
 })
 
 // 🧠 Role-based Menu Items

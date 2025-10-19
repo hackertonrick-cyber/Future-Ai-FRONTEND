@@ -59,8 +59,6 @@ const en = {
   join_heist: 'Join Heist',
   join_heist_title: 'BECOME A PROUD DIRTY-LEP',
   user_name: 'User name',
-  email: 'E-mail',
-  password: 'Password',
   re_type_password: 'Re-type Password',
   male: 'Male',
   female: 'Female',

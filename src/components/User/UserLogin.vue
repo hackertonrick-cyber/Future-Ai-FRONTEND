@@ -114,7 +114,7 @@
 </template>
 
 <script setup>
-import { reactive, ref, onMounted, watch } from "vue"
+import { reactive, ref, onMounted } from "vue"
 import { useRoute, useRouter } from "vue-router"
 import { useUserStore } from "@/stores/user"
 import PasswordResetModal from "@/components/Shared/PasswordResetModal.vue"

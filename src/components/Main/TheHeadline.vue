@@ -14,10 +14,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "Headline",
-}
+<script setup>
 </script>
 
 <style scoped>
