@@ -10,7 +10,6 @@
 
       <v-btn
         color="brand-green-1"
-        class="text-white"
         prepend-icon="mdi-plus"
         @click="showDialog = true"
       >
@@ -30,7 +29,7 @@
         <v-card
           class="rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition"
         >
-          <v-card-title class="bg-brand-green-1 text-white text-lg">
+          <v-card-title class="bg-brand-green-1 text-lg">
             {{ appt?.patientId?.firstName || "Unknown" }}
             {{ appt?.patientId?.lastName || "" }}
           </v-card-title>
@@ -162,7 +161,7 @@
         </v-card-text>
         <v-card-actions class="justify-end border-t pt-3">
           <v-btn text color="grey" @click="resetDialog">Cancel</v-btn>
-          <v-btn color="brand-green-1" class="text-white" @click="createAppointment">
+          <v-btn color="brand-green-1" @click="createAppointment">
             Save
           </v-btn>
         </v-card-actions>

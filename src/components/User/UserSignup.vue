@@ -8,7 +8,7 @@
             <v-card-title
               class="text-center text-brand-green-1 text-2xl font-semibold border-b bg-white"
             >
-              {{ $t("auth.patient_registration") }}
+              {{ $t("patient_registration") }}
             </v-card-title>
 
             <!-- 🔹 Form Body -->

@@ -14,9 +14,10 @@ import UserLogin from "@/components/User/UserLogin.vue";
 </script>
 
 <style scoped>
-/* background-image: url('@/assets/image/LG_CAVE.jpg'); */
+
 
 .background-image {
+  background-image: url('@/assets/image/healthcom1.png');
   position: fixed;
   top: 0;
   left: 0;

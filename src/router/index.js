@@ -4,6 +4,7 @@ import PatientsView from '../views/PatientsView.vue'
 import AppointmentView from '../views/AppointmentView.vue'
 import AccessRequestView from '../views/AccessRequestView.vue'
 import UserProfileView from '../views/UserProfileView.vue'
+import PatientsProfileView from '../views/PatientsProfileView.vue'
 
 const HomeView = () => import('@/views/HomeView.vue')
 const AboutView = () => import('@/views/AboutView.vue')
@@ -91,6 +92,17 @@ const routes = [
     path: '/userProfile',
     name: 'UserProfile',
     component: UserProfileView,
+    meta: {
+      requireAuth: true,
+      redirect: '/login',
+      enterClass: 'animate__animated animate__fadeInUpBig',
+      leaveClass: 'animate__animated animate__fadeOutDown',
+    },
+  },
+   {
+    path: '/patientProfile',
+    name: 'PatientProfile',
+    component: PatientsProfileView,
     meta: {
       requireAuth: true,
       redirect: '/login',

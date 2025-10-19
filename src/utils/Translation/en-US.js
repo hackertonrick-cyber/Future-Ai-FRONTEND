@@ -318,6 +318,7 @@ const en = {
   Argentina: 'Argentina',
   Armenia: 'Armenia',
   Aruba: 'Aruba',
+  patient_registration: "Patient Registration",
   Australia: 'Australia',
   Austria: 'Austria',
   Azerbaijan: 'Azerbaijan',

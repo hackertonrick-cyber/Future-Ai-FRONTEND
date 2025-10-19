@@ -1,5 +1,11 @@
 <template>
-  <div>Patients Profile view</div>
+  <v-container>
+    <v-row>
+      <v-col><the-patient-profile-view /></v-col>
+    </v-row>
+  </v-container>
 </template>
 
-<script setup></script>
+<script setup>
+  import ThePatientProfileView from '@/components/User/ThePatientProfileView.vue'
+</script>

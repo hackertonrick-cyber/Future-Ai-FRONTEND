@@ -45,7 +45,7 @@ export const useMedicalStore = defineStore('medical', {
         const { data } = await axios.post(
           `${import.meta.env.VITE_API_URL}/user/org/appointment`,
           payload,
-          { headers: { Authorization: `Bearer ${token}` } }
+          { headers: { Authorization: `Bearer ${token}` } },
         )
 
         this.appointments.unshift(data)
@@ -61,33 +61,30 @@ export const useMedicalStore = defineStore('medical', {
     // ============================================
     // 📋 Get Appointments
     // ============================================
-async [GET_APPOINTMENTS]() {
-  const uiStore = useUiStore()
-  const userStore = useUserStore()
+    async [GET_APPOINTMENTS]() {
+      const uiStore = useUiStore()
+      const userStore = useUserStore()
 
-  uiStore.START_LOADING('appointment.fetch')
+      uiStore.START_LOADING('appointment.fetch')
 
-  try {
-    const token = userStore.user.token
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/user/org/appointment`,
-      { headers: { Authorization: `Bearer ${token}` } }
-    )
+      try {
+        const token = userStore.user.token
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/user/org/appointment`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
 
-    // ✅ Expect an object with "appointments" array inside
-    this.appointments = data
-    this.appointmentsTotal = data.total || this.appointments.length
+        // ✅ Expect an object with "appointments" array inside
+        this.appointments = data
+        this.appointmentsTotal = data.total || this.appointments.length
 
-    uiStore.STOP_LOADING('appointment.fetch')
-    return data
-  } catch (err) {
-    console.error('Failed to load appointments:', err)
-    uiStore.STOP_LOADING('appointment.fetch')
-    return false
-  }
-}
-,
-
+        uiStore.STOP_LOADING('appointment.fetch')
+        return data
+      } catch (err) {
+        console.error('Failed to load appointments:', err)
+        uiStore.STOP_LOADING('appointment.fetch')
+        return false
+      }
+    },
     // ============================================
     // 🔐 Create Access Request
     // ============================================
@@ -106,9 +103,9 @@ async [GET_APPOINTMENTS]() {
         }
 
         const { data } = await axios.post(
-          `${import.meta.env.VITE_API_URL}/access-request`,
+          `${import.meta.env.VITE_API_URL}/user/org/profile-access/request`,
           formattedPayload,
-          { headers: { Authorization: `Bearer ${token}` } }
+          { headers: { Authorization: `Bearer ${token}` } },
         )
 
         this.accessRequests.unshift(data.request)
@@ -131,11 +128,14 @@ async [GET_APPOINTMENTS]() {
       try {
         const token = localStorage.getItem('token')
         const { data } = await axios.get(
-          `${import.meta.env.VITE_API_URL}/access-request`,
-          { headers: { Authorization: `Bearer ${token}` } }
+          `${import.meta.env.VITE_API_URL}/user/org/access-requests`,
+          { headers: { Authorization: `Bearer ${token}` } },
         )
 
-        this.accessRequests = Array.isArray(data) ? data : []
+        // ✅ Defensive assignment
+        this.accessRequests = data
+        this.accessRequestsCount = data.count
+
         uiStore.STOP_LOADING('accessRequest.fetch')
         return data
       } catch (err) {

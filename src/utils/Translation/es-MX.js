@@ -7,6 +7,7 @@ const es = {
   lastNameRequired: 'Apellido es obligatorio',
   invalidLastName: 'Mínimo 3 caracteres para apellido',
   gender: 'Género',
+   patient_registration: "Registro de Pacientes",
   genderRequired: 'Selecciona un género',
   heistMember: 'Miembro del golpe',
   heistMemberRequired: 'Selecciona un miembro del golpe',
