@@ -8,8 +8,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "start": "vite",
     "build": "vite build",
+    "start": "vite preview --port $PORT --host",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
